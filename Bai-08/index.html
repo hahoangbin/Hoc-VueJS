@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event VueJS</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+</head>
+<body>
+
+    <style>
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 180px;
+            margin-bottom: 40px;
+        }
+        .card .card-thumb {
+            width: auto;
+            height: 180px;;
+        }
+        .card-products {
+            display: flex;;
+            flex-direction: row;
+        }
+        .card.cart {
+            background: coral;
+        }
+    </style>
+
+    <h1>Hello vuejs 3 =)) </h1>
+
+    <section id="contact">
+        <div class="card-products card-container" :class="classTesting">
+            <div 
+                class="card" 
+                v-for="product in productsComputed"
+                :class="{ cart: product.isCart }"
+                @dblclick="onToggleCart($event, product)"
+                >
+                <img class="card-thumb"  v-bind:src="product.thumb"/>
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.price }}</p>
+            </div>
+        </div>
+        {{ productsComputed }}
+    </section>
+
+
+    <script src="http://unpkg.com/vue@next"></script>
+    <script src="vue.js"></script>
+</body>
+</html>
