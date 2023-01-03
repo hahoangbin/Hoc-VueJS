@@ -48,5 +48,6 @@ export default {
 	background-color: rgb(64, 206, 64);
 	height: 28px;
 	border-radius: 5px; 
+  color: rgb(52, 7, 248);
   }
 </style>
