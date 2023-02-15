@@ -1,56 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event VueJS</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VueJS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 </head>
+<style>
+    .box {
+        width: 200px;
+        height: 200px;
+        background: rgb(42, 148, 180);
+        margin-left: 68px;
+        position: relative;
+    }
+    .box-2 {
+        width: 68px;
+        height: 68px;
+        background: rgb(44, 214, 10);
+        top: 0;
+        right: 0;
+        position: absolute;
+    }
+</style>
 <body>
-
-    <style>
-        .card {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            width: 180px;
-            margin-bottom: 40px;
-        }
-        .card .card-thumb {
-            width: auto;
-            height: 180px;;
-        }
-        .card-products {
-            display: flex;;
-            flex-direction: row;
-        }
-        .card.cart {
-            background: coral;
-        }
-    </style>
-
-    <h1>Hello vuejs 3 =)) </h1>
-
-    <section id="contact">
-        <div class="card-products card-container" :class="classTesting">
-            <div 
-                class="card" 
-                v-for="product in productsComputed"
-                :class="{ cart: product.isCart }"
-                @dblclick="onToggleCart($event, product)"
-                >
-                <img class="card-thumb"  v-bind:src="product.thumb"/>
-                <h3>{{ product.name }}</h3>
-                <p>{{ product.price }}</p>
-            </div>
+    <div id="app">
+        <h1>Count: {{ counter }}</h1>
+        <button v-on:click="handleClick(5, $event)">Click me</button>
+        <div class="box" v-on:mousemove="handleMouseMove">
+            <p>ClientX: {{ clientX }}</p>
+            <p>ClientY: {{ clientY }}</p>
+            <div class="box-2" v-on:mousemove="handleMouseMoveChild"></div>
         </div>
-        {{ productsComputed }}
-    </section>
+        <hr>
+        <form action="./submit.txt" v-on:submit.prevent="handleSubmitForm">
+            <label for="">Nhập tên
+                <input type="text" name="firtName">
+            </label> 
+            <label for="">Nhập mật khẩu
+                <input type="number" name="password">
+            </label>
+            <input type="submit" value="Đăng nhập">
+        </form>
+    </div>
 
-
-    <script src="http://unpkg.com/vue@next"></script>
-    <script src="vue.js"></script>
 </body>
+<script>
+    var app = new Vue ({
+        el: '#app',
+
+        data: {
+            counter: 0,
+            clientX: 0,
+            clientY: 0
+        },
+
+        methods: {
+            handleClick(number, event) {
+                this.counter += number
+            },
+            handleMouseMove(e) {
+                this.clientX = e.clientX
+                this.clientY = e.clientY
+            },
+            handleSubmitForm(e) {
+
+            },
+            handleMouseMoveChild(e) {
+                e.stopPropagation()
+                console.log(handleMouseMoveChild, e.target)
+            }
+        }
+    })
+</script>
+
 </html>
