@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VueJS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<style>
+    #app {
+        padding: 100px;
+    }
+    .box {
+        width: 200px;
+        height: 200px;
+        background: rgb(42, 148, 180);
+        margin-left: 68px;
+        position: relative;
+    }
+    .box-2 {
+        width: 68px;
+        height: 68px;
+        background: rgb(44, 214, 10);
+        top: 0;
+        right: 0;
+        position: absolute;
+    }
+</style>
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+        <p></p>
+        <div>a + number = {{ addA }}</div>
+        <div>b + number = {{ addB }}</div>
+
+        <hr>
+
+        <button v-on:click="a -= 5">click</button>
+        <button v-on:click="b++">click</button>
+    </div>
+
+</body>
+<script>
+    var app = new Vue ({
+        el: '#app',
+
+        data: {
+            message: "Hello world",
+            a: 1,
+            b: 1,
+            number: 10,
+
+        },
+
+        methods: {
+
+        },
+        computed: {
+            addA() {
+                return this.a + this.number
+            },
+            addB() {
+                return this.b + this.number
+            }
+        }
+    })
+</script>
+
+</html>
