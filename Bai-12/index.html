@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>VueJS</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  </head>
+  <style>
+    #app {
+      padding: 100px;
+      width: 1200px;
+      height: 1200px;
+      background-image: url('https://mondaycareer.com/wp-content/uploads/2020/11/background-%C4%91%E1%BA%B9p-3-1.jpg');
+    }
+
+    .acc {
+        width: 300px;
+        height: 300px;
+        font-size: 60px;
+        color: rgb(240, 24, 9);
+        font-weight: 900;
+    }
+
+
+
+
+  </style>
+  <body>
+    <div id="app">
+      <div>
+        <div class="acc" v-bind:style="{backgroundImage: 'url(' + bg + ')'}">
+            Test style bindings
+          </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    var app = new Vue({
+      el: "#app",
+
+      data: {
+        activeColor: "red",
+        fontSize: 40,
+        bg: "https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-05.jpg",
+      },
+
+      methods: {},
+      computed: {},
+    });
+  </script>
+</html>
