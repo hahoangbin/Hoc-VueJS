@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>VueJS</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  </head>
+  <style>
+   
+  </style>
+  <body>
+    <div id="app">
+        <div v-for="(item, index) in items" class="list-blog" v-bind:key="index">
+          <div class="blog">{{ item.id }}</div>
+          <div class="blog">{{ item.title }}</div>
+          
+        </div>
+        <ul v-for="(value, key) in scores">
+          <li>{{ key }}: {{ value }} </li>
+        </ul>
+    </div>
+  </body>
+  <script>
+    var app = new Vue({
+      el: "#app",
+
+      data: {
+        scores: {
+          toan: 10,
+          van: 9.5,
+          anh: 7.5
+        },
+        items: [
+          {
+            "userId" : 1,
+            "id" : 1,
+            "title" : "kin kin din din din din din din din"
+          },
+          {
+            "userId" : 1,
+            "id" : 2,
+            "title" : "kin kin din din din din din din din"
+          },
+          {
+            "userId" : 1,
+            "id" : 3,
+            "title" : "kin kin din din din din din din din"
+          },
+          {
+            "userId" : 1,
+            "id" : 4,
+            "title" : "kin kin din din din din din din din"
+          }
+        ]
+      },
+
+      methods: {},
+
+      computed: {},
+    });
+  </script>
+</html>
