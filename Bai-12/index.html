@@ -13,28 +13,65 @@
       padding: 100px;
       width: 1200px;
       height: 1200px;
-      background-image: url('https://mondaycareer.com/wp-content/uploads/2020/11/background-%C4%91%E1%BA%B9p-3-1.jpg');
     }
-
-    .acc {
-        width: 300px;
-        height: 300px;
-        font-size: 60px;
-        color: rgb(240, 24, 9);
-        font-weight: 900;
+    .tabs li {
+      cursor: pointer;
+      display: inline-block;
+      padding: 15px;
+      border: 1px solid rgb(6, 228, 73);
+      width: 86px;
+      border-radius: 9px;
+      margin: 8px;
     }
-
-
-
-
+    .login, .register {
+      padding: 15px;
+      border: 2px solid rgb(209, 31, 7);
+    }
   </style>
   <body>
     <div id="app">
-      <div>
-        <div class="acc" v-bind:style="{backgroundImage: 'url(' + bg + ')'}">
-            Test style bindings
-          </div>
-      </div>
+        <h1>V-if</h1>
+        <hr>
+        <ul class="tabs">
+          <li v-on:click="changeTab('login')">Dang nhap</li>
+          <li v-on:click="changeTab('register')">Dang ky</li>
+        </ul>
+
+        <div class="login" v-if="tabSelected === 'login'">
+          <h3>Form dang nhap</h3>
+          <form action="">
+            <input type="text" placeholder="Nhap username">
+            <input type="password" placeholder="Nhap password">
+          </form>
+        </div>
+
+        <div class="register" v-else="tabSelected ==='abc'">
+          <h3>Form dang ky</h3>
+          <form action="">
+            <input type="text" placeholder="Nhap username">
+            <input type="password" placeholder="Nhap password">
+            <input type="password" placeholder="Nhap lai password">
+          </form>
+        </div>
+
+        <hr>
+        <h1>V-show</h1>
+        <div class="login" v-show="tabSelected === 'login'">
+          <h3>Form dang nhap</h3>
+          <form action="">
+            <input type="text" placeholder="Nhap username">
+            <input type="password" placeholder="Nhap password">
+          </form>
+        </div>
+
+        <div class="register" v-show="tabSelected ==='register'">
+          <h3>Form dang ky</h3>
+          <form action="">
+            <input type="text" placeholder="Nhap username">
+            <input type="password" placeholder="Nhap password">
+            <input type="password" placeholder="Nhap lai password">
+          </form>
+        </div>
     </div>
   </body>
   <script>
@@ -42,12 +79,14 @@
       el: "#app",
 
       data: {
-        activeColor: "red",
-        fontSize: 40,
-        bg: "https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-05.jpg",
-      },
+        tabSelected: "login",
+       },
 
-      methods: {},
+      methods: {
+        changeTab(tab) {
+          this.tabSelected = tab
+        }
+      },
       computed: {},
     });
   </script>
