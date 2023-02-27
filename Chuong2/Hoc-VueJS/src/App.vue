@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <compHeader/>
-    <compFooter/>
-    <list-user/>
+    <compHeader v-bind:title="title"/>
+    <list-user v-bind:listUsers="listUsers"/>
+    <compFooter v-bind:msg="msg"/>
   </div>
 </template>
 
@@ -17,7 +15,15 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      title: 'Hello world, Hello VueJS!',
+      listUsers: [
+        {id: 1, email: 'test@example.com', active: true},
+        {id: 2, email: 'test@example.com', active: true},
+        {id: 3, email: 'test@example.com', active: true},
+        {id: 4, email: 'test@example.com', active: true},
+        {id: 5, email: 'test@example.com', active: true},
+      ]
     }
   },
   

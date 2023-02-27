@@ -1,10 +1,13 @@
 <template>
-  <h1>{{ textFooter }}</h1>
+  <h1>{{ msg }}</h1>
 </template>
 
 <script>
 export default {
   name: 'comp-footer',
+  props: {
+    msg: String
+  },
   data() {
     return {
       textFooter: 'Hello Footer',
