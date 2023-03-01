@@ -1,6 +1,14 @@
 <template>
   <div id="app">
-    <compHeader v-bind:title="title"/>
+    <compHeader 
+    v-bind:title="title"
+    v-bind:msg="msg"
+    v-on:changeTitleEvent="handleChangeTitle"/>
+
+    <button v-on:click="title = 'Xin chào! mình là tèo đây!'">Thay đổi components
+      <p>{{ titleUser }}</p>
+    </button>
+    
     <list-user v-bind:listUsers="listUsers"/>
     <compFooter v-bind:msg="msg"/>
   </div>
@@ -26,12 +34,13 @@ export default {
       ]
     }
   },
-  
-  components: { 
-    CompHeader,
-    CompFooter, 
-    ListUser,
+
+  methods: {
+    handleChangeTitle(data) {
+      this.msg = data.msgsss
+    }
   }
+
 }
 </script>
 

@@ -1,7 +1,6 @@
 <template>
   <div class="list-user">
     <p>{{ titleUser }}</p>
-    <p>{{ title }}</p>
     <user 
     v-for="user in listUsers"
     v-bind:key="user.id"
@@ -23,7 +22,7 @@ export default {
   },
   data() {
     return {
-      titleUser: 'List user component',
+      titleUser: 'List User',
     }
   },
 
