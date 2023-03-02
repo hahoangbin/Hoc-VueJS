@@ -4,6 +4,9 @@
     <h2>{{ title }}</h2>
     <p>{{ msg }}</p>
     <button v-on:click="changeTitleHeader">Thay đổi title từ compHeader.vue</button>
+    <ul>
+      <li v-for="user in listUsers" v-bind:key="user.id">{{ user.email }}</li>
+    </ul>
   </header>
 </template>
 
@@ -13,7 +16,12 @@ export default {
   props: {
     title: String,
     msg: String,
+    listUsers: {
+      type: Array,
+      default: [],
+    },
   },
+
   data() {
     return {
       text: 'Header',

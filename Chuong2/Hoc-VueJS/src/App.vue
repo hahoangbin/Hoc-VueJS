@@ -1,15 +1,16 @@
 <template>
   <div id="app">
     <compHeader 
+    v-bind:listUsers="listUsers"
     v-bind:title="title"
     v-bind:msg="msg"
     v-on:changeTitleEvent="handleChangeTitle"/>
-
     <button v-on:click="title = 'Xin chào! mình là tèo đây!'">Thay đổi components
-      <p>{{ titleUser }}</p>
     </button>
     
-    <list-user v-bind:listUsers="listUsers"/>
+    <list-user 
+    v-bind:listUsers="listUsers"
+    v-on:deleteUserEvent="handleDeleteUser"/>
     <compFooter v-bind:msg="msg"/>
   </div>
 </template>
@@ -26,11 +27,11 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       title: 'Hello world, Hello VueJS!',
       listUsers: [
-        {id: 1, email: 'test@example.com', active: true},
-        {id: 2, email: 'test@example.com', active: true},
-        {id: 3, email: 'test@example.com', active: true},
-        {id: 4, email: 'test@example.com', active: true},
-        {id: 5, email: 'test@example.com', active: true},
+        {id: 1, email: 'test666@example.com', active: true},
+        {id: 2, email: 'test222@example.com', active: true},
+        {id: 3, email: 'test333@example.com', active: true},
+        {id: 4, email: 'test444@example.com', active: true},
+        {id: 5, email: 'test999@example.com', active: true},
       ]
     }
   },
@@ -38,6 +39,23 @@ export default {
   methods: {
     handleChangeTitle(data) {
       this.msg = data.msgsss
+    },
+
+    handleDeleteUser(data) {
+      var indexDelete = -1
+      this.listUsers.forEach((u, idx) => {
+        console.log(u.id, idx, data.id)
+        if(u.id === data.id) {
+          indexDelete = idx
+        }
+      })
+
+      if(indexDelete != -1) {
+        var test = this.listUsers.splice(indexDelete, 1)
+        console.log('phan tu bi xoa = ', test)
+      }
+      console.log('indexDelete sau khi chay vong for', indexDelete)
+      console.log('handledeleteuser trong App.vue', data)
     }
   }
 
