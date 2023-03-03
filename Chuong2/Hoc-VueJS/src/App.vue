@@ -5,13 +5,17 @@
     v-bind:title="title"
     v-bind:msg="msg"
     v-on:changeTitleEvent="handleChangeTitle"/>
+    
     <button v-on:click="title = 'Xin chào! mình là tèo đây!'">Thay đổi components
     </button>
     
     <list-user 
     v-bind:listUsers="listUsers"
     v-on:deleteUserEvent="handleDeleteUser"/>
+
     <compFooter v-bind:msg="msg"/>
+
+    <demo-ref></demo-ref>
   </div>
 </template>
 
@@ -19,8 +23,9 @@
 import CompHeader from "./components/CompHeader.vue";
 import CompFooter from "./components/CompFooter.vue";
 import ListUser from './components/ListUser.vue';
+import DemoRef from './components/DemoRef.vue';
 export default {
-  components: { CompHeader, CompFooter, ListUser },
+  components: { CompHeader, CompFooter, ListUser, DemoRef },
   name: 'app',
   data () {
     return {
