@@ -5,7 +5,7 @@
     v-bind:title="title"
     v-bind:msg="msg"
     v-on:changeTitleEvent="handleChangeTitle"/>
-    
+
     <button v-on:click="title = 'Xin chào! mình là tèo đây!'">Thay đổi components
     </button>
     
@@ -16,6 +16,12 @@
     <compFooter v-bind:msg="msg"/>
 
     <demo-ref></demo-ref>
+
+    <demo-slot>
+      <div class="demo-slot">
+        Những Ca Khúc Làm Nên Tên Tuổi Của Phan Mạnh Quỳnh | Tri Kỉ -Phan Mạnh Quỳnh
+      </div>
+    </demo-slot>
   </div>
 </template>
 
@@ -24,8 +30,9 @@ import CompHeader from "./components/CompHeader.vue";
 import CompFooter from "./components/CompFooter.vue";
 import ListUser from './components/ListUser.vue';
 import DemoRef from './components/DemoRef.vue';
+import DemoSlot from './components/DemoSlot.vue';
 export default {
-  components: { CompHeader, CompFooter, ListUser, DemoRef },
+  components: { CompHeader, CompFooter, ListUser, DemoRef, DemoSlot },
   name: 'app',
   data () {
     return {
