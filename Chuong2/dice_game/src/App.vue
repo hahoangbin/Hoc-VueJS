@@ -1,32 +1,59 @@
 <template>
   <div id="app">
     <div class="wrapper clearfix">
-      <players />
+      <!-- props -> Parent to Child -->
+      <players
+        v-bind:scoresPlayer="scoresPlayer"
+        v-bind:activePlayer="activePlayer"
+        v-bind:curentScore="curentScore" />
 
-      <controls />
+      <controls
+        v-on:handleNewGame="handleNewGame" />
 
       <dices />
+
+      <popup-rule
+        v-bind:isOpenPopup="isOpenPopup"
+        v-on:handleConfirm="handleConfirm" />
     </div>
   </div>
 </template>
 
 <script>
-import Players from "./components/Players.vue";
-import Controls from "./components/Controls.vue";
-import Dices from "./components/Dices.vue";
+import Players from './components/Players.vue'
+import Controls from './components/Controls.vue'
+import Dices from './components/Dices.vue'
+import PopupRule from './components/PopupRule.vue'
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     Players,
     Controls,
     Dices,
+    PopupRule
   },
 
-  data() {
-    return {};
+  data () {
+    return {
+      isPlaying: false,
+      activePlayer: 0, // Ai la nguoi choi hien tai?
+      scoresPlayer: [ 13, 30 ],
+      curentScore: 0,
+      isOpenPopup: false
+    }
   },
-};
+
+  methods: {
+    handleNewGame () {
+      console.log('handleNewGame App.vue')
+      this.isOpenPopup = true
+    },
+    handleConfirm () {
+      console.log('handle confirm')
+    }
+  }
+}
 </script>
 
 <style>

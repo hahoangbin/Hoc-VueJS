@@ -1,20 +1,20 @@
 <template>
   <div class="wrapper-player">
-    <div class="player-panel winner">
-      <div class="player-name">Winner</div>
-      <div class="player-score">43</div>
+    <div class="player-panel" :class="{ active: activePlayer == 0 }">
+      <div class="player-name">Player 1</div>
+      <div class="player-score">{{ scoresPlayer[0] }}</div>
       <div class="player-current-box">
         <div class="player-current-label">Current</div>
-        <div class="player-current-score">11</div>
+        <div class="player-current-score">{{ activePlayer == 0 ? curentScore : 0 }}</div>
       </div>
     </div>
 
-    <div class="player-panel">
+    <div class="player-panel" :class="{ active: activePlayer == 1 }">
       <div class="player-name">Player 2</div>
-      <div class="player-score">72</div>
+      <div class="player-score">{{ scoresPlayer[1] }}</div>
       <div class="player-current-box">
         <div class="player-current-label">Current</div>
-        <div class="player-current-score">0</div>
+        <div class="player-current-score">{{ activePlayer == 1 ? curentScore : 0 }}</div>
       </div>
     </div>
   </div>
@@ -22,11 +22,16 @@
 
 <script>
 export default {
-  name: "players",
-  data() {
-    return {};
+  name: 'players',
+  props: {
+    scoresPlayer: Array,
+    activePlayer: Number,
+    curentScore: Number
   },
-};
+  data () {
+    return {}
+  }
+}
 </script>
 
 <style>

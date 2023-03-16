@@ -26,12 +26,12 @@
 <script>
 export default {
   name: 'dices',
-  data() {
+  data () {
     return {
 
     }
   }
-};
+}
 </script>
 
 <style>
