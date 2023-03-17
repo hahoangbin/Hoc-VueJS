@@ -1,11 +1,9 @@
 <template>
   <div class="wrapper-control">
-    <button
-      class="control btn-new"
-      @click="newGame">
+    <button class="control btn-new" @click="newGame">
       <i class="ion-ios-plus-outline"></i>New game
     </button>
-    <button class="control btn-roll">
+    <button class="control btn-roll" @click="rollDice">
       <i class="ion-ios-loop"></i>Roll dice
     </button>
     <button class="control btn-hold">
@@ -20,15 +18,17 @@
 export default {
   name: 'controls',
   data () {
-    return {
-
-    }
+    return {}
   },
   methods: {
     newGame () {
       console.log('newGame Controls.vue')
       // kich hoat su kien handleNewGame cua App truyen vao
       this.$emit('handleNewGame')
+    },
+    rollDice () {
+      console.log('rollDice')
+      this.$emit('handleRollDice')
     }
   }
 }

@@ -8,9 +8,11 @@
         v-bind:curentScore="curentScore" />
 
       <controls
-        v-on:handleNewGame="handleNewGame" />
+        v-on:handleNewGame="handleNewGame"
+        v-on:handleRollDice="handleRollDice" />
 
-      <dices />
+      <dices
+        v-bind:dices="dices" />
 
       <popup-rule
         v-bind:isOpenPopup="isOpenPopup"
@@ -40,7 +42,8 @@ export default {
       activePlayer: 0, // Ai la nguoi choi hien tai?
       scoresPlayer: [ 13, 30 ],
       curentScore: 0,
-      isOpenPopup: false
+      isOpenPopup: false,
+      dices: [1, 6]
     }
   },
 
@@ -51,6 +54,25 @@ export default {
     },
     handleConfirm () {
       console.log('handle confirm')
+      this.isOpenPopup = false
+      this.isPlaying = true
+      this.activePlayer = 0
+      this.scoresPlayer = [0, 0]
+      this.curentScore = 0
+      this.dices = [1, 1]
+    },
+    handleRollDice () {
+      console.log('handleRollDice App.vue')
+      if (this.isPlaying) {
+        // Math.random() chi random ra so le tu 0 -> 1
+        var dice1 = Math.floor(Math.random() * 6) + 1
+        var dice2 = Math.floor(Math.random() * 6) + 1
+        console.log(dice1, dice2)
+
+        this.dices = [dice1, dice2]
+      } else {
+        alert('Vui lòng nhấn NewGame!')
+      }
     }
   }
 }
