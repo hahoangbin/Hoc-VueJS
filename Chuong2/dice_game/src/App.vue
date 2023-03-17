@@ -153,6 +153,7 @@ body {
   background-image: url("./assets/dice-1.png");
   background-position: center;
   background-size: cover;
+  border-radius: 26px;
 }
 .spinner .face2 {
   -webkit-transform: rotateY(90deg) translateZ(60px);
@@ -161,6 +162,7 @@ body {
   background-image: url("./assets/dice-2.png");
   background-position: center;
   background-size: cover;
+  border-radius: 26px;
 }
 .spinner .face3 {
   -webkit-transform: rotateY(90deg) rotateX(90deg) translateZ(60px);
@@ -169,6 +171,7 @@ body {
   background-image: url("./assets/dice-3.png");
   background-position: center;
   background-size: cover;
+  border-radius: 26px;
 }
 .spinner .face4 {
   -webkit-transform: rotateY(180deg) rotateZ(90deg) translateZ(60px);
@@ -177,6 +180,7 @@ body {
   background-image: url("./assets/dice-4.png");
   background-position: center;
   background-size: cover;
+  border-radius: 26px;
 }
 .spinner .face5 {
   -webkit-transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px);
@@ -185,6 +189,7 @@ body {
   background-image: url("./assets/dice-5.png");
   background-position: center;
   background-size: cover;
+  border-radius: 26px;
 }
 .spinner .face6 {
   -webkit-transform: rotateX(-90deg) translateZ(60px);
@@ -193,6 +198,7 @@ body {
   background-image: url("./assets/dice-6.png");
   background-position: center;
   background-size: cover;
+  border-radius: 26px;
 }
 
 .spinner {
