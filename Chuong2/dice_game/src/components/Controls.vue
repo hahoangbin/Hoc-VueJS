@@ -6,7 +6,7 @@
     <button class="control btn-roll" @click="rollDice">
       <i class="ion-ios-loop"></i>Roll dice
     </button>
-    <button class="control btn-hold">
+    <button class="control btn-hold" @click="$emit('handleHoldScore')">
       <i class="ion-ios-download-outline"></i>Hold
     </button>
 

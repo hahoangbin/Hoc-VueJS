@@ -8,6 +8,7 @@
         v-bind:curentScore="curentScore" />
 
       <controls
+        v-on:handleHoldScore="handleHoldScore"
         v-on:handleNewGame="handleNewGame"
         v-on:handleRollDice="handleRollDice" />
 
@@ -61,6 +62,10 @@ export default {
       this.curentScore = 0
       this.dices = [1, 1]
     },
+    nextPlayer () {
+      this.activePlayer = this.activePlayer === 0 ? 1 : 0
+      this.curentScore = 0
+    },
     handleRollDice () {
       console.log('handleRollDice App.vue')
       if (this.isPlaying) {
@@ -70,6 +75,40 @@ export default {
         console.log(dice1, dice2)
 
         this.dices = [dice1, dice2]
+
+        if (dice1 === 1 || dice2 === 1) {
+          let activePlayer = this.activePlayer
+          setTimeout(() => {
+            alert(`Người chơi PLAYER ${activePlayer + 1} đã quay trúng số 1, rất tiếc!`)
+          }, 300)
+          // đổi lượt chơi
+          this.nextPlayer()
+        } else {
+          // cộng dồn điểm tạm thời cho người đang chơi
+          this.curentScore = this.curentScore + dice1 + dice2
+        }
+      } else {
+        alert('Vui lòng nhấn NewGame!')
+      }
+    },
+    handleHoldScore () {
+      if (this.isPlaying) {
+        console.log('handleHoldScore App.vue')
+
+        let {scoresPlayer, activePlayer, curentScore} = this
+        let scoreOld = scoresPlayer[activePlayer]
+        // cách 1
+        // let cloneScorePlayer = [...scoresPlayer]
+        // cloneScorePlayer[activePlayer] = scoreOld + curentScore
+        // this.scoresPlayer = cloneScorePlayer
+
+        // cách 2
+        this.$set(this.scoresPlayer, activePlayer, scoreOld + curentScore)
+
+        this.nextPlayer()
+
+        // this.scoresPlayer[this.activePlayer] = this.scoresPlayer[this.activePlayer] + this.curentScore
+        // this.scoresPlayer[this.activePlayer] = scoreOld + curentScore
       } else {
         alert('Vui lòng nhấn NewGame!')
       }
