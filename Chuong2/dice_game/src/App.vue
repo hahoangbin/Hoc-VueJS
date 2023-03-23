@@ -8,6 +8,8 @@
         v-bind:curentScore="curentScore" />
 
       <controls
+        v-on:handleChangeFinalScore="handleChangeFinalScore"
+        v-bind:finalScore="finalScore"
         v-on:handleHoldScore="handleHoldScore"
         v-on:handleNewGame="handleNewGame"
         v-on:handleRollDice="handleRollDice" />
@@ -42,13 +44,17 @@ export default {
       isPlaying: false,
       activePlayer: 0, // Ai la nguoi choi hien tai?
       scoresPlayer: [ 13, 30 ],
-      curentScore: 0,
+      curentScore: 30,
       isOpenPopup: false,
-      dices: [1, 6]
+      dices: [1, 6],
+      finalScore: 100
     }
   },
 
   methods: {
+    handleChangeFinalScore (e) {
+
+    },
     handleNewGame () {
       console.log('handleNewGame App.vue')
       this.isOpenPopup = true
