@@ -18,6 +18,7 @@
     /> -->
     <input
       v-bind:value="finalScore"
+      v-bind:disabled="isPlaying"
       v-on:input="$emit('handleChangeFinalScore', $event)"
       type="number"
       placeholder="Final score"
@@ -30,7 +31,8 @@
 export default {
   name: 'controls',
   props: {
-    finalScore: {type: Number, default: 100}
+    finalScore: {type: [Number, String], default: 100},
+    isPlaying: {type: Boolean, default: false}
   },
   data () {
     return {

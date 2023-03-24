@@ -4,12 +4,14 @@
       <!-- props -> Parent to Child -->
       <players
         v-bind:scoresPlayer="scoresPlayer"
+        v-bind:isWinner="isWinner"
         v-bind:activePlayer="activePlayer"
         v-bind:curentScore="curentScore" />
 
       <controls
         v-on:handleChangeFinalScore="handleChangeFinalScore"
         v-bind:finalScore="finalScore"
+        v-bind:isPlaying="isPlaying"
         v-on:handleHoldScore="handleHoldScore"
         v-on:handleNewGame="handleNewGame"
         v-on:handleRollDice="handleRollDice" />
@@ -44,16 +46,34 @@ export default {
       isPlaying: false,
       activePlayer: 0, // Ai la nguoi choi hien tai?
       scoresPlayer: [ 13, 30 ],
-      curentScore: 30,
+      curentScore: 0,
       isOpenPopup: false,
       dices: [1, 6],
-      finalScore: 100
+      finalScore: 30
+    }
+  },
+
+  computed: {
+    isWinner () {
+      let {scoresPlayer, finalScore} = this
+
+      if (scoresPlayer[0] >= finalScore || scoresPlayer[1] >= finalScore) {
+        // dừng cuộc chơi
+        this.isPlaying = false
+        return true
+      }
+      return false
     }
   },
 
   methods: {
     handleChangeFinalScore (e) {
-
+      var number = parseInt(e.target.value)
+      if (isNaN(number)) {
+        this.finalScore = ''
+      } else {
+        this.finalScore = number
+      }
     },
     handleNewGame () {
       console.log('handleNewGame App.vue')
@@ -111,7 +131,9 @@ export default {
         // cách 2
         this.$set(this.scoresPlayer, activePlayer, scoreOld + curentScore)
 
-        this.nextPlayer()
+        if (!this.isWinner) {
+          this.nextPlayer()
+        }
 
         // this.scoresPlayer[this.activePlayer] = this.scoresPlayer[this.activePlayer] + this.curentScore
         // this.scoresPlayer[this.activePlayer] = scoreOld + curentScore
